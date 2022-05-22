@@ -17,13 +17,20 @@ def pdf_2_mp3(file_path='test.pdf', language='en'):
 
         text = ''.join(pages)
 
-        with open('text_after_join.txt', 'w') as file:
-            file.write(text)
+        #testing how the text looks
+        # with open('text_after_join.txt', 'w') as file:
+        #     file.write(text)
 
         text = text.replace('\n', '')
 
-        with open('text_after_replace.txt', 'w') as file:
-            file.write(text)
+        # with open('text_after_replace.txt', 'w') as file:
+        #     file.write(text)
+        audio = gTTS(text=text, lang=language, slow=False)
+        file_name = Path(file_path).stem
+        audio.save(f'{file_name}.mp3')
+
+        return f'[+] {file_name}.mp3 saved successfully'
+
     else:
         return 'Missing file, check'
 
