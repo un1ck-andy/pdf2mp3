@@ -1,11 +1,16 @@
 from gtts import gTTS
 import pdfplumber
 from pathlib import Path
+from art import tprint
 
 
 def pdf_2_mp3(file_path='test.pdf', language='en'):
     if Path(file_path).is_file() and Path(file_path).suffix == '.pdf':
         # return 'File exists'
+
+        print(f'[+] Original file: {Path(file_path.name)}')
+        print(f'[+] Processing...')
+
         with pdfplumber.PDF(open(file=file_path, mode='rb')) as pdf:
             pages = [page.extract_text() for page in pdf.pages]
 
@@ -36,6 +41,7 @@ def pdf_2_mp3(file_path='test.pdf', language='en'):
 
 
 def main():
+    tprint('PDF to MP3', font='sans-serif')
     file_path = input("Enter a file's path: ")
     language = input("Choose language, for example 'en': ")
     print(pdf_2_mp3(file_path=file_path, language=language))
