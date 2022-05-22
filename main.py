@@ -36,7 +36,9 @@ def pdf_2_mp3(file_path='test.pdf', language='en'):
 
 
 def main():
-    print(pdf_2_mp3(file_path='test.pdf'))
+    file_path = input("Enter a file's path: ")
+    language = input("Choose language, for example 'en': ")
+    print(pdf_2_mp3(file_path=file_path, language=language))
 
 
 if __name__ == '__main__':
